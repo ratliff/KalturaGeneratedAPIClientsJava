@@ -158,6 +158,27 @@
           </execution>
         </executions>
       </plugin>
+      
+      <!-- Compute signatures for JAR files -->
+      <!-- http://central.sonatype.org/pages/apache-maven.html#gpg-signed-components -->
+      <!-- Use command:  mvn verify         
+	   NOTE:  you will need to enter passphrase for gpg key for each artifact
+		  unless the passphrase is specified as are argument or in settings.xml
+	    See:  https://maven.apache.org/plugins/maven-gpg-plugin/usage.html -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
     </plugins>
   </build>
